@@ -537,7 +537,7 @@ def config_argparser():
     argumentParser.add_argument('-v', '--verbose',
         action='store_true', dest='verbose', help='Sets the verbosity logging level')
     argumentParser.add_argument('-m', '--model',
-        action='store',      dest='model', help='Specifies mode of modeling price (0 - Every tick, 1 - Control points, 2 - Open prices)', default='0')
+        action='store',      dest='model', help='Mode of modeling price for FXT format (0 - Every tick, 1 - Control points, 2 - Open prices)', default='0')
     argumentParser.add_argument('-h', '--help',
         action='help', help='Show this help message and exit')
 

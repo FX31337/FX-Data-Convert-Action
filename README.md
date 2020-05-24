@@ -36,6 +36,16 @@ The format of the file to convert to.
 
 Supported output formats: `fxt`, `hst` and `hcc`.
 
+### `ModelingMode`
+
+Mode of modeling price (for FXT format only).
+
+Supported modes:
+
+- `0` - Every tick (default)
+- `1` - Control points
+- `2` - Open prices
+
 ### `Pair`
 
 Symbol pair code (e.g. `EURUSD`, default: `FOOBAR`).

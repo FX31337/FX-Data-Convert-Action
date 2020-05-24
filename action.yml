@@ -10,6 +10,9 @@ inputs:
   OutputFormat:
     description: 'The format of the file to convert to'
     default: 'fxt'
+  ModelingMode:
+    description: 'Mode of modeling price (for FXT)'
+    default: 0
   Pair:
     description: 'Symbol pair code'
     default: 'FOOBAR'
@@ -21,8 +24,9 @@ runs:
   using: 'docker'
   image: 'Dockerfile'
   args:
-    - "-i ${{ inputs.InputFile }}"
     - "-f ${{ inputs.OutputFormat }}"
+    - "-i ${{ inputs.InputFile }}"
+    - "-m ${{ inputs.ModelingMode }}"
     - "-p ${{ inputs.Pair }}"
 branding:
   icon: 'bar-chart'
