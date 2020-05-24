@@ -1,0 +1,20 @@
+---
+name: Action
+
+on:
+  pull_request:
+    paths-ignore:
+      - '*.md'
+  push:
+    paths-ignore:
+      - '*.md'
+
+jobs:
+  Local:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Runs local action
+        uses: ./
+        with:
+          InputFile: "foo"
