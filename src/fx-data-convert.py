@@ -521,23 +521,23 @@ class HCC(Output):
 def config_argparser():
     argumentParser = argparse.ArgumentParser(add_help=False)
     argumentParser.add_argument('-i', '--input-file',
-        action='store',      dest='inputFile', help='input file', default=None, required=True)
+        action='store',      dest='inputFile', help='Input filename', default=None, required=True)
     argumentParser.add_argument('-f', '--output-format',
-        action='store',      dest='outputFormat', help='format of output file (FXT/HST/Old HST/HCC), as: fxt/hst/hst_509/hcc', default='fxt')
+        action='store',      dest='outputFormat', help='Format of the output file (fxt/hst/hst_509/hcc)', default='fxt')
     argumentParser.add_argument('-s', '--symbol',
-        action='store',      dest='symbol', help='symbol code (maximum 12 characters)', default='EURUSD')
+        action='store',      dest='symbol', help='Symbol pair code (max. 12 chars)')
     argumentParser.add_argument('-t', '--timeframe',
-        action='store',      dest='timeframe', help='one of the timeframe values: M1, M5, M15, M30, H1, H4, D1, W1, MN', default='M1')
+        action='store',      dest='timeframe', help='Timeframe (M1, M5, M15, M30, H1, H4, D1, W1, MN1)', default='M1')
     argumentParser.add_argument('-p', '--spread',
-        action='store',      dest='spread', help='spread value in points', default=20)
+        action='store',      dest='spread', help='Spread value in points', default=10)
     argumentParser.add_argument('-d', '--output-dir',
-        action='store',      dest='outputDir', help='destination directory to save the output file', default='.')
+        action='store',      dest='outputDir', help='Destination directory to save the output file', default='.')
     argumentParser.add_argument('-S', '--server',
-        action='store',      dest='server', help='name of FX server', default='default')
+        action='store',      dest='server', help='Name of FX server', default='default')
     argumentParser.add_argument('-v', '--verbose',
-        action='store_true', dest='verbose', help='increase output verbosity')
+        action='store_true', dest='verbose', help='Sets the verbosity logging level')
     argumentParser.add_argument('-m', '--model',
-        action='store',      dest='model', help='one of the model values: 0, 1, 2', default='0')
+        action='store',      dest='model', help='Specifies mode of modeling price (0 - Every tick, 1 - Control points, 2 - Open prices)', default='0')
     argumentParser.add_argument('-h', '--help',
         action='help', help='Show this help message and exit')
 
