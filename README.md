@@ -36,6 +36,10 @@ The format of the file to convert to.
 
 Supported output formats: `fxt`, `hst` and `hcc`.
 
+### `Pair`
+
+Symbol pair code (e.g. `EURUSD`, default: `FOOBAR`).
+
 <!--
 ## Outputs
 

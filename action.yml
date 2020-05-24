@@ -9,6 +9,10 @@ inputs:
     required: true
   OutputFormat:
     description: 'The format of the file to convert to'
+    default: 'fxt'
+  Pair:
+    description: 'Symbol pair code'
+    default: 'FOOBAR'
 
 # outputs:
 #  foo: # id of output
@@ -19,6 +23,7 @@ runs:
   args:
     - "-i ${{ inputs.InputFile }}"
     - "-f ${{ inputs.OutputFormat }}"
+    - "-p ${{ inputs.Pair }}"
 branding:
   icon: 'bar-chart'
   color: 'green'
