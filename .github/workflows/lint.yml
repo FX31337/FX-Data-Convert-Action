@@ -4,10 +4,17 @@ on:
   - pull_request
   - push
 jobs:
+  Dockerfile:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: brpaz/hadolint-action@master
+        with:
+          dockerfile: Dockerfile
   YAML:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v1
+      - uses: actions/checkout@v2
       - name: YAML check (yamllint)
         uses: ibiqlik/action-yamllint@master
         with:
