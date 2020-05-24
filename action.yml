@@ -24,10 +24,14 @@ runs:
   using: 'docker'
   image: 'Dockerfile'
   args:
-    - "-f ${{ inputs.OutputFormat }}"
-    - "-i ${{ inputs.InputFile }}"
-    - "-m ${{ inputs.ModelingMode }}"
-    - "-p ${{ inputs.Pair }}"
+    - '-i'
+    - '${{ inputs.InputFile }}'
+    - '-f'
+    - '${{ inputs.OutputFormat }}'
+    - '-m'
+    - '${{ inputs.ModelingMode }}'
+    - '-p'
+    - '${{ inputs.Pair }}'
 branding:
   icon: 'bar-chart'
   color: 'green'
