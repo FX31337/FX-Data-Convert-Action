@@ -524,11 +524,11 @@ def config_argparser():
         action='store',      dest='inputFile', help='Input filename', default=None, required=True)
     argumentParser.add_argument('-f', '--output-format',
         action='store',      dest='outputFormat', help='Format of the output file (fxt/hst/hst_509/hcc)', default='fxt')
-    argumentParser.add_argument('-s', '--symbol',
-        action='store',      dest='symbol', help='Symbol pair code (max. 12 chars)')
+    argumentParser.add_argument('-p', '--pair',
+        action='store',      dest='pair', help='Symbol pair code (max. 12 chars)')
     argumentParser.add_argument('-t', '--timeframe',
         action='store',      dest='timeframe', help='Timeframe (M1, M5, M15, M30, H1, H4, D1, W1, MN1)', default='M1')
-    argumentParser.add_argument('-p', '--spread',
+    argumentParser.add_argument('-s', '--spread',
         action='store',      dest='spread', help='Spread value in points', default=10)
     argumentParser.add_argument('-d', '--output-dir',
         action='store',      dest='outputDir', help='Destination directory to save the output file', default='.')
@@ -633,27 +633,25 @@ def process_queue(queue):
 
 
 if __name__ == '__main__':
-    # Parse the arguments
+    # Parse the arguments.
     arg_parser = config_argparser()
     args = arg_parser.parse_args()
 
-    # Checking input file argument
+    # Checking input file argument.
     if args.verbose:
         print('[INFO] Input file: %s' % args.inputFile)
 
-    # Checking symbol argument
-    if len(args.symbol) > 12:
+    # Checking symbol pair argument.
+    if len(args.pair) > 12:
         print('[WARNING] Symbol is more than 12 characters, cutting its end off!')
-        symbol = args.symbol[0:12]
+        symbol = args.pair[0:12]
     else:
-        symbol = args.symbol
+        symbol = args.pair
     if args.verbose:
-        print('[INFO] Symbol name: %s' % symbol)
+        print('[INFO] Symbol pair name: %s' % symbol)
 
-    # Converting timeframe argument to minutes
+    # Converting timeframe argument to minutes.
     timeframe_list = []
-
-
 
     timeframe_conv = {
         'M': 1,
