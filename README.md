@@ -8,9 +8,9 @@
 [![][tg-chat-image]][tg-chat-link]
 [![Edit][gitpod-image]][gitpod-link]
 
-# FX Data Convert Action
+# FX Data Convert 🐳 Action
 
-This GitHub Action can convert Forex historical data to different formats (such as CSV, HST, FXT or HCC).
+This GitHub Action allows Forex historical data to be converted into different formats (e.g. from CSV to HST, FXT or HCC).
 
 ## Supported formats
 
