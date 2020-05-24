@@ -525,7 +525,7 @@ def config_argparser():
     argumentParser.add_argument('-f', '--output-format',
         action='store',      dest='outputFormat', help='Format of the output file (fxt/hst/hst_509/hcc)', default='fxt')
     argumentParser.add_argument('-p', '--pair',
-        action='store',      dest='pair', help='Symbol pair code (max. 12 chars)')
+        action='store',      dest='pair', help='Symbol pair code (max. 12 chars)', default='FOOBAR')
     argumentParser.add_argument('-t', '--timeframe',
         action='store',      dest='timeframe', help='Timeframe (M1, M5, M15, M30, H1, H4, D1, W1, MN1)', default='M1')
     argumentParser.add_argument('-s', '--spread',
@@ -642,7 +642,7 @@ if __name__ == '__main__':
         print('[INFO] Input file: %s' % args.inputFile)
 
     # Checking symbol pair argument.
-    if len(args.pair) > 12:
+    if args.pair and len(args.pair) > 12:
         print('[WARNING] Symbol is more than 12 characters, cutting its end off!')
         symbol = args.pair[0:12]
     else:
