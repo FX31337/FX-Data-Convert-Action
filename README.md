@@ -12,17 +12,29 @@
 
 This GitHub Action can convert Forex historical data to different formats (such as CSV, HST, FXT or HCC).
 
+## Supported formats
+
+Supported input formats:
+
+- CSV
+
+Supported output formats:
+
+- FXT
+- HST
+- HCC
+
 ## Main Inputs
 
 ### `InputFile`
 
-The filename to convert from.
+The CSV filename to convert from.
 
 ### `OutputFormat`
 
 The format of the file to convert to.
 
-Supported formats: fxt4, hst4, hcc.
+Supported output formats: `fxt`, `hst` and `hcc`.
 
 <!--
 ## Outputs
@@ -38,7 +50,7 @@ Foo bar.
 uses: ea31337/fx-data-convert-action@master
 with:
   InputFile: 'myfile.csv'
-  OutputFormat: 'hst4'
+  OutputFormat: 'fxt'
 ```
 
 ### Support

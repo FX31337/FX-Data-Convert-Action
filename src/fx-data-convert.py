@@ -523,7 +523,7 @@ def config_argparser():
     argumentParser.add_argument('-i', '--input-file',
         action='store',      dest='inputFile', help='input file', default=None, required=True)
     argumentParser.add_argument('-f', '--output-format',
-        action='store',      dest='outputFormat', help='format of output file (FXT/HST/Old HST/HCC), as: fxt4/hst4/hst4_509/hcc', default='fxt4')
+        action='store',      dest='outputFormat', help='format of output file (FXT/HST/Old HST/HCC), as: fxt/hst/hst_509/hcc', default='fxt')
     argumentParser.add_argument('-s', '--symbol',
         action='store',      dest='symbol', help='symbol code (maximum 12 characters)', default='EURUSD')
     argumentParser.add_argument('-t', '--timeframe',
@@ -551,11 +551,11 @@ def construct_queue(timeframe_list):
         if multiple_timeframes:
             print('[INFO] Queueing the {}m timeframe for conversion'.format(timeframe))
         # Checking output file format argument and doing conversion
-        if outputFormat == 'hst4_509':
+        if outputFormat == 'hst_509':
             yield HST509(None, '.hst', args.outputDir, timeframe, symbol)
-        elif outputFormat == 'hst4':
+        elif outputFormat == 'hst':
             yield HST574(None, '.hst', args.outputDir, timeframe, symbol)
-        elif outputFormat == 'fxt4':
+        elif outputFormat == 'fxt':
             for m in args.model.split(','):
                 yield FXT(None, '_{0}.fxt'.format(m), args.outputDir, timeframe, symbol, server, spread, int(m))
         elif outputFormat == 'hcc':
