@@ -12,3 +12,21 @@ jobs:
         uses: ibiqlik/action-yamllint@master
         with:
           strict: true
+  Python:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@master
+      - name: Setup Python
+        uses: actions/setup-python@v1
+        with:
+          python-version: 3.7.7
+          architecture: x64
+      - name: Install Flake
+        run: pip install Flake8
+      - name: Run Flake8
+        uses: suo/flake8-github-action@releases/v1
+        with:
+          # Note: This needs to be the same as the job name.
+          checkName: 'Python'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
