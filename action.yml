@@ -1,0 +1,24 @@
+# action.yml
+---
+name: 'FX Data Convert Action'
+description: 'Converts Forex historical data to different formats'
+author: 'kenorb'
+inputs:
+  InputFile:
+    description: 'The filename to convert from'
+    required: true
+  OutputFormat:
+    description: 'The format of the file to convert to'
+
+# outputs:
+#  foo: # id of output
+#    description: 'Foo'
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  args:
+    - "-i ${{ inputs.InputFile }}"
+    - "-f ${{ inputs.OutputFormat }}"
+branding:
+  icon: 'bar-chart'
+  color: 'green'
