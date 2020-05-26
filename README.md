@@ -50,6 +50,12 @@ Supported modes:
 
 Symbol pair code (e.g. `EURUSD`, default: `FOOBAR`).
 
+## Other Inputs
+
+### `CmdArgs`
+
+Extra arguments to pass to the script. Default: `-v` (for verbose output).
+
 <!--
 ## Outputs
 

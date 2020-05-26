@@ -4,6 +4,9 @@ name: 'FX Data Convert Action'
 description: 'Converts Forex historical data to different formats'
 author: 'kenorb'
 inputs:
+  CmdArgs:
+    description: 'Extra script arguments'
+    default: '-v'
   InputFile:
     description: 'The filename to convert from'
     required: true
@@ -32,6 +35,7 @@ runs:
     - '${{ inputs.ModelingMode }}'
     - '-p'
     - '${{ inputs.Pair }}'
+    - '${{ inputs.CmdArgs }}'
 branding:
   icon: 'bar-chart'
   color: 'green'
