@@ -10,14 +10,30 @@ on:
       - '*.md'
 
 jobs:
-  Local:
+  Generated:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
       - uses: fx31337/fx-data-generate-action@master
         with:
           OutputFile: "data.csv"
-      - name: Runs local action
+      - name: Runs local convert action
+        uses: ./
+        with:
+          InputFile: "data.csv"
+  Downloaded:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: fx31337/fx-data-download-action@master
+        with:
+          Pairs: "EURUSD"
+          Years: 2020
+          Months: 1
+          Days: 1
+      - name: Merges CSV files
+        run: find . -name "*.csv" -and -not -name "data.csv" -exec cat {} "+" > data.csv
+      - name: Runs local convert action
         uses: ./
         with:
           InputFile: "data.csv"
