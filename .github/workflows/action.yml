@@ -14,7 +14,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+      - uses: fx31337/fx-data-generate-action@master
+        with:
+          OutputFile: "data.csv"
       - name: Runs local action
         uses: ./
         with:
-          InputFile: "foo"
+          InputFile: "data.csv"
