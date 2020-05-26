@@ -37,5 +37,5 @@ runs:
     - '${{ inputs.Pair }}'
     - '${{ inputs.CmdArgs }}'
 branding:
-  icon: 'bar-chart'
-  color: 'green'
+  icon: 'arrow-right-circle'
+  color: 'blue'
