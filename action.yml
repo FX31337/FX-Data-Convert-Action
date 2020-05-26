@@ -1,7 +1,7 @@
 # action.yml
 ---
 name: 'FX Data Convert Action'
-description: 'Converts Forex historical data to different formats'
+description: 'Converts Forex historical data to different formats (e.g. CSV to HST/FXT/HCC)'
 author: 'kenorb'
 inputs:
   CmdArgs:
