@@ -1,15 +1,16 @@
 #!/usr/bin/env python3
 # Python script to convert Forex files into different formats (e.g. FXT/HST/HCC).
 
-import argparse
-import sys
-import os
-import csv
-import re
 from struct import pack, pack_into, calcsize
-import time
+import argparse
+import bstruct
+import csv
 import datetime
 import mmap
+import os
+import re
+import sys
+import time
 
 class Spinner:
     def __init__(self, step):

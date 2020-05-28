@@ -1,13 +1,12 @@
 #!/usr/bin/env python3
 
 import argparse
-import sys
-from struct import *
-import datetime
+import bstruct
 import csv
+import datetime
 import math
-
-from bstruct_defs import *
+import struct
+import sys
 
 class Input:
     def __init__(self, fileName):
