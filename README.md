@@ -11,13 +11,11 @@
 
 This GitHub Action allows Forex historical data to be converted to different formats.
 
-Supported input formats:
+Supported formats:
 
 - CSV
-
-Supported output formats:
-
 - HST (historical data, e.g. OHLC values)
+- HST v509 (older version)
 - FXT (tick data for MetaTrader 4)
 - HCC (tick data for MetaTrader 5)
 
@@ -89,6 +87,17 @@ Symbol pair code (e.g. `EURUSD`, default: `FOOBAR`).
 #### `CmdArgs`
 
 Extra arguments to pass to the script. Default: `-v` (for verbose output).
+
+#### `OptVerbose`
+
+Specifies level of verbosity (0-2).
+
+Supported levels are:
+
+- 0 - no output
+- 1 - standard messages
+- 2 - debug messages
+- 3 - trace messages
 
 <!--
 ## Outputs

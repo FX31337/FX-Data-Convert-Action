@@ -117,7 +117,7 @@ class HCC(Input):
                                  '{:.5f}'.format(row['close']),
                                ])
 
-class HST_509(Input):
+class HST509(Input):
     version = 400
     headerLength = 148
     rowLength = 44
@@ -290,16 +290,17 @@ class FXT(Input):
 if __name__ == '__main__':
     # Parse the arguments
     argumentParser = argparse.ArgumentParser(add_help=False)
-    argumentParser.add_argument('-i', '--input-file', action='store', dest='inputFile', help='input file', required=True)
-    argumentParser.add_argument('-f', '--input-format', action='store', dest='inputFormat', help='MetaTrader format of input file (fxt/hst/hst_509)', required=True)
-    argumentParser.add_argument('-o', '--output-file', action='store', dest='outputFile', help='output CSV file', default=None)
-    argumentParser.add_argument('-v', '--verbose', action='store_true', dest='verbose', help='increase output verbosity')
+    argumentParser.add_argument('-i', '--input-file', action='store', dest='inputFile', help='Input file', required=True)
+    argumentParser.add_argument('-f', '--input-format', action='store', dest='inputFormat', help='MetaTrader format of input file (fxt/hcc/hst/hst509)', required=True)
+    argumentParser.add_argument('-o', '--output-file', action='store', dest='outputFile', help='Output CSV file', default=None)
+    argumentParser.add_argument('-v', '--verbose', action='store_true', dest='verbose', help='Enables verbose messages')
+    argumentParser.add_argument('-D', '--debug', action='store_true', dest='debug', help='Enables debugging messages')
     argumentParser.add_argument('-h', '--help', action='help', help='Show this help message and exit')
     args = argumentParser.parse_args()
 
-    if args.inputFormat == 'hst_509':
-        hst_509 = HST_509(args.inputFile)
-        hst_509.toCsv(args.outputFile) if args.outputFile else print(hst_509)
+    if args.inputFormat == 'hst509':
+        hst509 = HST509(args.inputFile)
+        hst509.toCsv(args.outputFile) if args.outputFile else print(hst509)
     elif args.inputFormat == 'hst':
         hst = HST(args.inputFile)
         hst.toCsv(args.outputFile) if args.outputFile else print(hst)

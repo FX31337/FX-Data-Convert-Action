@@ -524,7 +524,7 @@ def config_argparser():
     argumentParser.add_argument('-i', '--input-file',
         action='store',      dest='inputFile', help='Input filename (in CSV format)', default=None, required=True)
     argumentParser.add_argument('-f', '--output-format',
-        action='store',      dest='outputFormat', help='Format of the output file (fxt/hst/hst_509/hcc)', default='fxt')
+        action='store',      dest='outputFormat', help='Format of the output file (fxt/hst/hst509/hcc)', default='fxt')
     argumentParser.add_argument('-p', '--pair',
         action='store',      dest='pair', help='Symbol pair code (max. 12 chars)', default='FOOBAR')
     argumentParser.add_argument('-t', '--timeframe',
@@ -536,7 +536,9 @@ def config_argparser():
     argumentParser.add_argument('-S', '--server',
         action='store',      dest='server', help='Name of FX server', default='default')
     argumentParser.add_argument('-v', '--verbose',
-        action='store_true', dest='verbose', help='Sets the verbosity logging level')
+        action='store_true', dest='verbose', help='Enables verbose messages')
+    argumentParser.add_argument('-D', '--debug',
+        action='store_true', dest='debug', help='Enables debugging messages')
     argumentParser.add_argument('-m', '--model',
         action='store',      dest='model', help='Mode of modeling price for FXT format (0 - Every tick, 1 - Control points, 2 - Open prices)', default='0')
     argumentParser.add_argument('-h', '--help',
@@ -552,7 +554,7 @@ def construct_queue(timeframe_list):
         if multiple_timeframes:
             print('[INFO] Queueing the {}m timeframe for conversion'.format(timeframe))
         # Checking output file format argument and doing conversion
-        if outputFormat == 'hst_509':
+        if outputFormat == 'hst509':
             yield HST509(None, '.hst', args.outputDir, timeframe, symbol)
         elif outputFormat == 'hst':
             yield HST574(None, '.hst', args.outputDir, timeframe, symbol)
@@ -562,7 +564,7 @@ def construct_queue(timeframe_list):
         elif outputFormat == 'hcc':
             yield HCC('.hcc', args.outputDir, timeframe, symbol)
         else:
-            print('[ERROR] Unknown output file format!')
+            print('[ERROR] Unknown output file format: {}!'.format(outputFormat))
             sys.exit(1)
 
 
@@ -697,7 +699,7 @@ if __name__ == '__main__':
     if args.verbose:
         print('[INFO] Server name: %s' % server)
 
-    outputFormat = args.outputFormat.lower()
+    outputFormat = args.outputFormat.strip().lower()
     if args.verbose:
         print('[INFO] Output format: %s' % outputFormat)
 

@@ -21,6 +21,7 @@ jobs:
         uses: ./
         with:
           InputFile: "data.csv"
+          LogLevel: 3
   Downloaded:
     runs-on: ubuntu-latest
     steps:
@@ -37,3 +38,4 @@ jobs:
         uses: ./
         with:
           InputFile: "data.csv"
+          LogLevel: 3
