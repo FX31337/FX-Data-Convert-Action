@@ -9,4 +9,4 @@ RUN set
 COPY src /opt/src
 
 # Executes `entrypoint.sh` when the Docker container starts up.
-ENTRYPOINT ["/opt/src/fx-data-convert.py"]
+ENTRYPOINT ["/opt/src/fx-data-convert-from-csv.py"]

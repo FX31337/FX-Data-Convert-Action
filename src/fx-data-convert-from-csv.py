@@ -521,7 +521,7 @@ class HCC(Output):
 def config_argparser():
     argumentParser = argparse.ArgumentParser(add_help=False)
     argumentParser.add_argument('-i', '--input-file',
-        action='store',      dest='inputFile', help='Input filename', default=None, required=True)
+        action='store',      dest='inputFile', help='Input filename (in CSV format)', default=None, required=True)
     argumentParser.add_argument('-f', '--output-format',
         action='store',      dest='outputFormat', help='Format of the output file (fxt/hst/hst_509/hcc)', default='fxt')
     argumentParser.add_argument('-p', '--pair',
