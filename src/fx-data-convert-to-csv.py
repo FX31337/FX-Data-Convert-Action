@@ -29,7 +29,7 @@ class Input:
         if (len(self.content) - self.headerLength)%self.rowLength != 0:
             print('[ERROR] File length isn\'t valid for this kind of format!')
 
-        if self.version != unpack('<i', self.content[0:4])[0]:
+        if self.version != struct.unpack('<i', self.content[0:4])[0]:
             print('[ERROR] Unsupported format version!')
             sys.exit(1)
 
@@ -127,12 +127,12 @@ class HST509(Input):
         for i in range(0, self.numberOfRows):
             base = self.headerLength + i*self.rowLength
             self.rows += [{'timestamp': datetime.datetime.fromtimestamp(
-                                        unpack('<i', self.content[base          :base + 4      ])[0], datetime.timezone.utc),
-                           'open'     : unpack('<d', self.content[base +       4:base + 4 +   8])[0],
-                           'low'      : unpack('<d', self.content[base + 4 +   8:base + 4 + 2*8])[0],
-                           'high'     : unpack('<d', self.content[base + 4 + 2*8:base + 4 + 3*8])[0],
-                           'close'    : unpack('<d', self.content[base + 4 + 3*8:base + 4 + 4*8])[0],
-                           'volume'   : unpack('<d', self.content[base + 4 + 4*8:base + 4 + 5*8])[0]
+                                        struct.unpack('<i', self.content[base          :base + 4      ])[0], datetime.timezone.utc),
+                           'open'     : struct.unpack('<d', self.content[base +       4:base + 4 +   8])[0],
+                           'low'      : struct.unpack('<d', self.content[base + 4 +   8:base + 4 + 2*8])[0],
+                           'high'     : struct.unpack('<d', self.content[base + 4 + 2*8:base + 4 + 3*8])[0],
+                           'close'    : struct.unpack('<d', self.content[base + 4 + 3*8:base + 4 + 4*8])[0],
+                           'volume'   : struct.unpack('<d', self.content[base + 4 + 4*8:base + 4 + 5*8])[0]
                          }]
 
 
@@ -178,14 +178,14 @@ class HST(Input):
         for i in range(0, self.numberOfRows):
             base = self.headerLength + i*self.rowLength
             self.rows += [{'timestamp' : datetime.datetime.fromtimestamp(
-                                         unpack('<i', self.content[base          :base +       4])[0], datetime.timezone.utc),
-                           'open'      : unpack('<d', self.content[base +       8:base +     2*8])[0],
-                           'high'      : unpack('<d', self.content[base +     2*8:base +     3*8])[0],
-                           'low'       : unpack('<d', self.content[base +     3*8:base +     4*8])[0],
-                           'close'     : unpack('<d', self.content[base +     4*8:base +     5*8])[0],
-                           'volume'    : unpack('<Q', self.content[base +     5*8:base +     6*8])[0],
-                           'spread'    : unpack('<i', self.content[base +     6*8:base + 4 + 6*8])[0],
-                           'realVolume': unpack('<Q', self.content[base + 4 + 6*8:base + 4 + 7*8])[0]
+                                         struct.unpack('<i', self.content[base          :base +       4])[0], datetime.timezone.utc),
+                           'open'      : struct.unpack('<d', self.content[base +       8:base +     2*8])[0],
+                           'high'      : struct.unpack('<d', self.content[base +     2*8:base +     3*8])[0],
+                           'low'       : struct.unpack('<d', self.content[base +     3*8:base +     4*8])[0],
+                           'close'     : struct.unpack('<d', self.content[base +     4*8:base +     5*8])[0],
+                           'volume'    : struct.unpack('<Q', self.content[base +     5*8:base +     6*8])[0],
+                           'spread'    : struct.unpack('<i', self.content[base +     6*8:base + 4 + 6*8])[0],
+                           'realVolume': struct.unpack('<Q', self.content[base + 4 + 6*8:base + 4 + 7*8])[0]
                          }]
 
 
@@ -237,15 +237,15 @@ class FXT(Input):
         for i in range(0, self.numberOfRows):
             base = self.headerLength + i*self.rowLength
             self.rows += [{'barTimestamp' : datetime.datetime.fromtimestamp(
-                                            unpack('<i', self.content[base          :base +       4])[0], datetime.timezone.utc),
-                           'open'         : unpack('<d', self.content[base +       8:base +     2*8])[0],
-                           'high'         : unpack('<d', self.content[base +     2*8:base +     3*8])[0],
-                           'low'          : unpack('<d', self.content[base +     3*8:base +     4*8])[0],
-                           'close'        : unpack('<d', self.content[base +     4*8:base +     5*8])[0],
-                           'volume'       : unpack('<Q', self.content[base +     5*8:base +     6*8])[0],
+                                            struct.unpack('<i', self.content[base          :base +       4])[0], datetime.timezone.utc),
+                           'open'         : struct.unpack('<d', self.content[base +       8:base +     2*8])[0],
+                           'high'         : struct.unpack('<d', self.content[base +     2*8:base +     3*8])[0],
+                           'low'          : struct.unpack('<d', self.content[base +     3*8:base +     4*8])[0],
+                           'close'        : struct.unpack('<d', self.content[base +     4*8:base +     5*8])[0],
+                           'volume'       : struct.unpack('<Q', self.content[base +     5*8:base +     6*8])[0],
                            'tickTimestamp': datetime.datetime.fromtimestamp(
-                                            unpack('<i', self.content[base +     6*8:base + 4 + 6*8])[0], datetime.timezone.utc),
-                           'flag'         : unpack('<i', self.content[base + 4 + 6*8:base +     7*8])[0]
+                                            struct.unpack('<i', self.content[base +     6*8:base + 4 + 6*8])[0], datetime.timezone.utc),
+                           'flag'         : struct.unpack('<i', self.content[base + 4 + 6*8:base +     7*8])[0]
                          }]
 
 
