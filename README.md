@@ -3,6 +3,7 @@
 <!-- [![Docker image][docker-build-image]][docker-build-link] -->
 [![Release][github-release-image]][github-release-link]
 [![Status][gha-image-action-master]][gha-link-action-master]
+[![Status][gha-image-check-master]][gha-link-check-master]
 [![Status][gha-image-docker-master]][gha-link-docker-master]
 [![Status][gha-image-lint-master]][gha-link-lint-master]
 [![Telegram Channel][tg-channel-image]][tg-channel-link]
@@ -124,6 +125,8 @@ Foo bar.
 
 [gha-link-action-master]: https://github.com/FX31337/FX-Data-Convert-Action/actions?query=workflow%3AAction+branch%3Amaster
 [gha-image-action-master]: https://github.com/FX31337/FX-Data-Convert-Action/workflows/Action/badge.svg
+[gha-link-check-master]: https://github.com/FX31337/FX-Data-Convert-Action/actions?query=workflow%3ACheck+branch%3Amaster
+[gha-image-check-master]: https://github.com/FX31337/FX-Data-Convert-Action/workflows/Check/badge.svg
 [gha-link-docker-master]: https://github.com/FX31337/FX-Data-Convert-Action/actions?query=workflow%3ADocker+branch%3Amaster
 [gha-image-docker-master]: https://github.com/FX31337/FX-Data-Convert-Action/workflows/Docker/badge.svg
 [gha-link-lint-master]: https://github.com/FX31337/FX-Data-Convert-Action/actions?query=workflow%3ALint+branch%3Amaster
