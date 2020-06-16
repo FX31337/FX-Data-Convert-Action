@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+# -*- coding: utf-8 -*-
 # Python script to convert Forex files into different formats (e.g. FXT/HST/HCC).
 
 from struct import pack, pack_into, calcsize
@@ -79,7 +80,7 @@ def string_to_timestamp(s):
 class CSV(Input):
     def __init__(self, path):
         super().__init__(path)
-        if os.name == "nt":
+        if os.name == 'nt':
             self._map_obj = mmap.mmap(self.path.fileno(), 0, access=mmap.ACCESS_READ)
         else:
             self._map_obj = mmap.mmap(self.path.fileno(), 0, prot=mmap.PROT_READ)
