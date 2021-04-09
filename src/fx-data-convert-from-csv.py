@@ -14,6 +14,7 @@ import sys
 import time
 
 class Spinner:
+    '''Displays an ASCII spinner'''
     def __init__(self, step):
         self._n = self._x = 0
         self._chars = '\\|/-'
@@ -44,15 +45,16 @@ class Input:
         except OSError as e:
             print("[ERROR] '%s' raised when tried to read the file '%s'" % (e.strerror, e.filename))
             sys.exit(1)
+        self.uniBars = []
 
     def __del__(self):
         self.path.close()
 
-    def _addBar(self, barTimestamp, tickTimestamp, open, high, low, close, volume):
+    def _addBar(self, barTimestamp, tickTimestamp, uniBar_open, high, low, close, volume):
         self.uniBars += [{
             'barTimestamp': barTimestamp,
            'tickTimestamp': tickTimestamp,
-                    'open': open,
+                    'open': uniBar_open,
                     'high': high,
                      'low': low,
                    'close': close,
@@ -80,10 +82,7 @@ def string_to_timestamp(s):
 class CSV(Input):
     def __init__(self, path):
         super().__init__(path)
-        if os.name == 'nt':
-            self._map_obj = mmap.mmap(self.path.fileno(), 0, access=mmap.ACCESS_READ)
-        else:
-            self._map_obj = mmap.mmap(self.path.fileno(), 0, prot=mmap.PROT_READ)
+        self._map_obj = mmap.mmap(self.path.fileno(), 0, access=mmap.ACCESS_READ)
 
     def __iter__(self):
         return self
@@ -93,8 +92,7 @@ class CSV(Input):
         if line:
             isLastRow = self._map_obj.tell () == self._map_obj.size ()
             return (self._parseLine(line), isLastRow)
-        else:
-            raise StopIteration
+        raise StopIteration
 
     def _parseLine(self, line):
         tick = line.split(b',')
@@ -577,13 +575,13 @@ def process_queue(queue):
     try:
         for obj in queue:
 
-            ticks = CSV(args.inputFile);
+            ticks = CSV(args.inputFile)
 
             startTimestamp = None
 
             # We will retrieve all ticks in the timeframe into following array and update their LowBid/HighBid
-            ticksToJoin      = [];
-            ticksToAggregate = [];
+            ticksToJoin      = []
+            ticksToAggregate = []
 
             for (tick, isLastRow) in ticks:
                 # Beginning of the bar's timeline.
