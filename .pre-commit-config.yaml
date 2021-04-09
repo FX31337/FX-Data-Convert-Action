@@ -39,7 +39,6 @@ repos:
         exclude: ^(README.md)$
       - id: script-must-have-extension
       - id: shellcheck
-      - id: shfmt
 
   - repo: https://github.com/pre-commit/pre-commit-hooks
     rev: v3.4.0
