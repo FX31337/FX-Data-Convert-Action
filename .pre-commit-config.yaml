@@ -2,7 +2,7 @@
 repos:
 
   - repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: v3.1.0
+    rev: v3.4.0
     hooks:
       - id: check-added-large-files
       - id: check-ast
@@ -24,12 +24,12 @@ repos:
       - id: trailing-whitespace
 
   - repo: https://github.com/igorshubovych/markdownlint-cli.git
-    rev: v0.23.1
+    rev: v0.27.1
     hooks:
       - id: markdownlint
 
   - repo: https://github.com/adrienverge/yamllint.git
-    rev: v1.23.0
+    rev: v1.26.1
     hooks:
       - id: yamllint
         args: ["-c", ".yamllint", "-s"]
