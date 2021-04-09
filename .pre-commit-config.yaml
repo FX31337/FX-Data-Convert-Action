@@ -36,6 +36,7 @@ repos:
       - id: git-check     # Configure in .gitattributes
       - id: markdownlint  # Configure in .mdlrc
       - id: require-ascii
+        exclude: ^(README.md)$
       - id: script-must-have-extension
       - id: shellcheck
       - id: shfmt
