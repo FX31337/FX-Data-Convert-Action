@@ -28,6 +28,18 @@ repos:
     hooks:
       - id: markdownlint
 
+  - repo: https://github.com/jumanjihouse/pre-commit-hooks
+    rev: 2.1.5
+    hooks:
+      - id: forbid-binary
+        exclude: ^(lib|conf/servers)/.*$
+      - id: git-check     # Configure in .gitattributes
+      - id: markdownlint  # Configure in .mdlrc
+      - id: require-ascii
+      - id: script-must-have-extension
+      - id: shellcheck
+      - id: shfmt
+
   - repo: https://github.com/adrienverge/yamllint.git
     rev: v1.26.1
     hooks:
