@@ -1,27 +1,27 @@
 ---
 repos:
 
-  - repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: v3.4.0
+  - repo: https://github.com/adrienverge/yamllint.git
+    rev: v1.26.1
     hooks:
-      - id: check-added-large-files
-      - id: check-ast
-      - id: check-builtin-literals
-      - id: check-byte-order-marker
-      - id: check-case-conflict
-      - id: check-docstring-first
-      - id: check-docstring-first
-      - id: check-executables-have-shebangs
-      - id: check-json
-      - id: check-merge-conflict
-      - id: check-yaml
-      - id: debug-statements
-      - id: double-quote-string-fixer
-      - id: end-of-file-fixer
-      - id: fix-encoding-pragma
-      - id: mixed-line-ending
-      - id: sort-simple-yaml
-      - id: trailing-whitespace
+      - id: yamllint
+        args: ["-c", ".yamllint", "-s"]
+
+  - repo: https://github.com/psf/black
+    rev: 20.8b1
+    hooks:
+      - id: black
+        args: [--line-length=88]
+        files: '(\.py)$'
+        language_version: python3
+
+  #  - repo: https://github.com/PyCQA/flake8
+  #    rev: 3.9.0
+  #    hooks:
+  #      - id: flake8
+  #        # Harmonizing flake8 and black
+  #        args: [--max-line-length=88]
+  #        files: '(\.py)$'
 
   - repo: https://github.com/igorshubovych/markdownlint-cli.git
     rev: v0.27.1
@@ -41,8 +41,23 @@ repos:
       - id: shellcheck
       - id: shfmt
 
-  - repo: https://github.com/adrienverge/yamllint.git
-    rev: v1.26.1
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v3.4.0
     hooks:
-      - id: yamllint
-        args: ["-c", ".yamllint", "-s"]
+      - id: check-added-large-files
+      - id: check-ast
+      - id: check-builtin-literals
+      - id: check-byte-order-marker
+      - id: check-case-conflict
+      - id: check-docstring-first
+      - id: check-docstring-first
+      - id: check-executables-have-shebangs
+      - id: check-json
+      - id: check-merge-conflict
+      - id: check-yaml
+      - id: debug-statements
+      - id: end-of-file-fixer
+      - id: fix-encoding-pragma
+      - id: mixed-line-ending
+      - id: sort-simple-yaml
+      - id: trailing-whitespace
