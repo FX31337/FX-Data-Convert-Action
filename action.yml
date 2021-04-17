@@ -1,40 +1,40 @@
 # action.yml
 ---
-name: 'FX Data Convert Action'
-description: 'Converts Forex historical data to different formats (e.g. CSV to HST/FXT/HCC)'
-author: 'kenorb'
+name: FX Data Convert Action
+description: Converts Forex historical data to different formats (e.g. CSV to HST/FXT/HCC)
+author: kenorb
 inputs:
   CmdArgs:
-    description: 'Extra script arguments'
-    default: '-v'
+    description: Extra script arguments
+    default: -v
   InputFile:
-    description: 'The filename to convert from'
+    description: The filename to convert from
     required: true
   InputFormat:
-    description: 'The format of the file to convert from (csv, fxt, hst, hst509)'
-    default: 'csv'
+    description: The format of the file to convert from (csv, fxt, hst, hst509)
+    default: csv
   OutputFormat:
-    description: 'The format of the file to convert to (csv, fxt, hcc, hst, hst509)'
-    default: 'fxt'
+    description: The format of the file to convert to (csv, fxt, hcc, hst, hst509)
+    default: fxt
   ModelingMode:
-    description: 'Mode of modeling price (for FXT)'
+    description: Mode of modeling price (for FXT)
     default: 0
   Pair:
-    description: 'Symbol pair code'
-    default: 'FOOBAR'
+    description: Symbol pair code
+    default: FOOBAR
 
   LogLevel:
-    description: 'Specifies level of verbosity (0-3)'
+    description: Specifies level of verbosity (0-3)
     default: 1
 
 # outputs:
 #  foo: # id of output
-#    description: 'Foo'
+#    description: Foo
 runs:
-  using: 'docker'
-  image: 'Dockerfile'
+  using: docker
+  image: Dockerfile
   args:
-    - '${{ inputs.CmdArgs }}'
+    - ${{ inputs.CmdArgs }}
 branding:
-  icon: 'arrow-right-circle'
-  color: 'blue'
+  icon: arrow-right-circle
+  color: blue
